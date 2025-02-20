@@ -116,8 +116,9 @@ export function TagInput({
         {!disabled && value.length < maxTags && (
           <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
-              <Input
+              <input
                 ref={inputRef}
+                type="text"
                 value={inputValue}
                 onChange={(e) => {
                   setInputValue(e.target.value)
@@ -125,7 +126,7 @@ export function TagInput({
                 }}
                 onKeyDown={handleKeyDown}
                 placeholder={placeholder}
-                className="h-7 w-20 border-0 p-0 focus-visible:ring-0"
+                className="h-7 w-20 border-0 bg-transparent p-0 text-sm focus:outline-none"
               />
             </PopoverTrigger>
             {suggestions.length > 0 && (
