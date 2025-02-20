@@ -1,106 +1,43 @@
-# Active Context
+# Active Development Context
 
 ## Current Focus
-The project is currently in Phase 1 (Foundation), with core infrastructure and basic features implemented. The focus is transitioning to Phase 2 (Core Features) with an emphasis on implementing the admin API for photo management and public gallery features.
+- Photo viewing and management system
+- Tag integration and display
+- Modal UI improvements
 
 ## Recent Changes
-1. **UI Components**
-   - Created PhotoCard for individual photo display
-   - Built PhotoGrid with tag filtering
-   - Implemented AlbumGrid for album management
-   - Added ImageUpload with drag & drop
-   - Created TagInput with suggestions
 
-2. **Testing & Configuration**
-   - Added test page to verify components
-   - Fixed Next.js image configuration
-   - Resolved hydration issues
-   - Improved tag input functionality
+### Photo Modal Improvements
+- Updated photo modal positioning using Radix UI's built-in system
+- Fixed image container sizing and centering
+- Improved sidebar transitions
+- Added proper focus management
+- Fixed tag rendering to handle Supabase data structure
 
-3. **Development Setup**
-   - Configured Next.js 15
-   - Set up Supabase integration
-   - Implemented i18n with next-intl
-   - Configured testing environment
+### Type System Updates
+- Enhanced Photo type to include photos_tags
+- Added PhotoTag interface for better type safety
+- Updated tag rendering to use structured data from Supabase
 
-## Active Decisions
-
-### Architecture
-1. **Admin API**
-   - RESTful endpoint design
-   - File upload integration
-   - Database schema design
-   - Error handling patterns
-
-2. **Gallery Features**
-   - Photo management workflow
-   - Album organization logic
-   - Tag system implementation
-   - Download & sharing mechanisms
-
-### Technical Considerations
-1. **Performance**
-   - Image optimization strategy
-   - Gallery loading patterns
-   - Caching implementation
-   - Bundle optimization
-
-2. **Security**
-   - Admin authentication flow
-   - API rate limiting
-   - File upload security
-   - Access control
+### API Improvements
+- Fixed params handling in dynamic photo routes
+- Added proper caching headers
+- Improved error handling
 
 ## Next Steps
+- Implement photo download functionality
+- Add sharing capabilities
+- Enhance tag management system
+- Improve photo navigation experience
 
-### Immediate Priority
-1. **API Integration**
-   - Connect photo upload to storage
-   - Implement album CRUD operations
-   - Set up tag management API
-   - Add download tracking
+## Active Decisions
+- Using Radix UI for modal management
+- Leveraging Supabase for photo and tag storage
+- Implementing responsive design patterns
+- Following accessibility best practices
 
-2. **Gallery Features**
-   - Implement photo viewing
-   - Add album navigation
-   - Enable photo downloads
-   - Configure social sharing
-
-3. **Testing & Documentation**
-   - Write component tests
-   - Add API documentation
-   - Create usage examples
-   - Document best practices
-
-### Short-term Goals
-1. **Core Features**
-   - Complete admin API
-   - Finish gallery views
-   - Enable downloads
-   - Implement sharing
-
-2. **UI/UX Improvements**
-   - Loading states
-   - Error handling
-   - Success feedback
-   - Responsive design
-
-### Known Issues
-1. **Technical Debt**
-   - Need API endpoint types
-   - Improve error handling
-   - Add API tests
-   - Document endpoints
-
-2. **Performance**
-   - Optimize image loading
-   - Implement pagination
-   - Add request caching
-   - Optimize bundle size
-
-## Current Questions
-1. Image storage optimization strategy
-2. Album organization structure
-3. Tagging system implementation
-4. Download tracking approach
-5. Social media integration methods
+## Technical Considerations
+- Maintaining type safety across the application
+- Ensuring proper error handling
+- Following React best practices
+- Optimizing performance with proper caching

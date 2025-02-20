@@ -15,7 +15,9 @@
   "navigation": {
     "home": "Accueil",
     "mainMenu": "Menu principal",
-    "todos": "Tâches"
+    "dashboard": "Tableau de bord",
+    "albums": "Albums",
+    "photos": "Photos"
   },
   "settings": {
     "title": "Paramètres",

@@ -1,0 +1,92 @@
+# Cline Rules for Photo Platform
+
+## Project Patterns
+
+### File Structure
+- Pages in `src/app/`
+- Components in `src/components/`
+- UI components in `src/components/ui/`
+- Hooks in `src/hooks/`
+- Types in `src/types/`
+- API logic in `src/lib/api/`
+- Utilities in `src/lib/utils.ts`
+
+### Naming Conventions
+- React components: PascalCase
+- Hooks: camelCase with 'use' prefix
+- Files: kebab-case
+- CSS classes: kebab-case
+- TypeScript types: PascalCase
+
+### Component Structure
+- Functional components with TypeScript
+- Props interface defined above component
+- Export as named exports
+- Group related components in folders
+
+### State Management
+- React Query for server state
+- Local state with useState/useReducer
+- Context for theme/auth/i18n
+
+### Testing
+- Cypress for E2E and component tests
+- Vitest for unit tests
+- Test files co-located with components
+
+### Styling
+- Tailwind CSS for styling
+- CSS modules for custom styles
+- shadcn/ui component library
+- Dark/light theme support
+
+## Implementation Paths
+
+### Authentication
+1. Use Supabase Auth
+2. Protected routes in middleware.ts
+3. Auth state in useCurrentUser hook
+
+### API Requests
+1. Define types in database.ts
+2. Create API functions in queries.ts
+3. Use React Query hooks for data fetching
+
+### Internationalization
+1. Messages in i18n/messages/
+2. Use translation keys
+3. Support language switching
+
+### Error Handling
+1. Toast notifications for user feedback
+2. Error boundaries for component errors
+3. API error handling in queries
+
+## User Preferences
+- Prefer TypeScript over JavaScript
+- Use named exports over default exports
+- Implement proper error handling
+- Include comprehensive tests
+- Document complex logic
+- Maintain consistent formatting
+
+## Known Challenges
+1. Image optimization for large files
+2. Real-time updates performance
+3. Cache invalidation strategies
+4. Mobile responsive design
+5. Accessibility compliance
+
+## Tool Usage
+1. ESLint for code quality
+2. Prettier for formatting
+3. TypeScript for type safety
+4. Cypress for testing
+5. Tailwind for styling
+
+## Project Evolution
+1. Start with basic photo management
+2. Add social features later
+3. Scale based on user needs
+4. Optimize for performance
+5. Enhance security measures

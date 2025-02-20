@@ -82,8 +82,15 @@ body {
 @layer base {
   * {
     @apply border-border;
+    user-select: none;
   }
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Enable text selection for specific elements */
+input,
+textarea {
+  user-select: text;
 }

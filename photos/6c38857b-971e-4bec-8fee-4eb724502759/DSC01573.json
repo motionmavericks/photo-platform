@@ -1,0 +1,23 @@
+{
+  "id": "6c38857b-971e-4bec-8fee-4eb724502759",
+  "title": "DSC01573",
+  "original_filename": "DSC01573.jpg",
+  "mime_type": "image/jpeg",
+  "size_bytes": 404372,
+  "width": 2048,
+  "height": 1365,
+  "description": null,
+  "status": "processing",
+  "face_detections": [
+    {
+      "person": "julie uhrman",
+      "confidence_score": 0.4693835959781226,
+      "bounding_box": {
+        "x": 50.48828125,
+        "y": 26.73992673992674,
+        "width": 10.83984375,
+        "height": 16.336996336996336
+      }
+    }
+  ]
+}

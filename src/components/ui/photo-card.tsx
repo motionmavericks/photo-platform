@@ -1,127 +1,88 @@
-import * as React from "react"
-import Image from "next/image"
-import { cn } from "@/lib/utils"
-import { Card } from "./card"
-import { Button } from "./button"
-import {
-  DownloadIcon,
-  ShareIcon,
-  TagIcon,
-  MoreHorizontalIcon,
-} from "lucide-react"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./dropdown-menu"
+"use client"
 
-interface PhotoCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  src: string
-  alt: string
-  title?: string
-  tags?: string[]
-  onDownload?: () => void
-  onShare?: () => void
-  onTagsUpdate?: (tags: string[]) => void
-  isAdmin?: boolean
-  width?: number
-  height?: number
+import { Photo } from "@/types"
+import { cn } from "@/lib/utils"
+import { Heart, Plus } from "lucide-react"
+import Image from "next/image"
+import { MouseEvent } from "react"
+
+interface PhotoCardProps {
+  photo: Photo
+  isSelected: boolean
+  isFavorite: boolean
+  onToggleFavorite: (photoId: string) => void
+  onAddToAlbum: (photoId: string) => void
+  onSelect: (event: MouseEvent<HTMLDivElement>) => void
+  onClick: (photo: Photo) => void
 }
 
 export function PhotoCard({
-  src,
-  alt,
-  title,
-  tags = [],
-  onDownload,
-  onShare,
-  onTagsUpdate,
-  isAdmin = false,
-  width = 300,
-  height = 200,
-  className,
-  ...props
+  photo,
+  isSelected,
+  isFavorite,
+  onToggleFavorite,
+  onAddToAlbum,
+  onSelect,
+  onClick,
 }: PhotoCardProps) {
+  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.shiftKey || event.ctrlKey || event.metaKey) {
+      onSelect(event)
+    } else {
+      onClick(photo)
+    }
+  }
+
   return (
-    <Card
+    <div
       className={cn(
-        "group relative overflow-hidden transition-all hover:shadow-lg",
-        className
+        "group relative aspect-square overflow-hidden rounded-lg bg-zinc-900",
+        isSelected && "ring-2 ring-emerald-600"
       )}
-      {...props}
+      onClick={handleClick}
+      draggable
+      onDragStart={(e) => {
+        e.dataTransfer.setData("application/json", JSON.stringify(photo))
+      }}
     >
-      <div className="relative aspect-[3/2]">
+      <div className="relative w-full h-full">
         <Image
-          src={src}
-          alt={alt}
+          src={`/api/photos/${photo.id}`}
+          alt={photo.title || photo.original_filename}
           fill
-          className="object-cover transition-transform group-hover:scale-105"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority
         />
-        <div className="absolute inset-0 bg-black/40 opacity-0 transition-opacity group-hover:opacity-100" />
-        <div className="absolute inset-0 flex items-center justify-center gap-2 opacity-0 transition-opacity group-hover:opacity-100">
-          {onDownload && (
-            <Button
-              size="icon"
-              variant="ghost"
-              className="h-8 w-8 text-white hover:bg-black/20 hover:text-white"
-              onClick={onDownload}
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        <div className="flex items-center justify-between">
+          <h3 className="text-sm font-medium text-white truncate">{photo.title || photo.original_filename}</h3>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                onToggleFavorite(photo.id)
+              }}
+              className={`rounded-full p-1.5 transition-colors ${
+                isFavorite ? "bg-emerald-600 text-white" : "bg-zinc-800 text-zinc-400 hover:text-zinc-100"
+              }`}
             >
-              <DownloadIcon className="h-4 w-4" />
-            </Button>
-          )}
-          {onShare && (
-            <Button
-              size="icon"
-              variant="ghost"
-              className="h-8 w-8 text-white hover:bg-black/20 hover:text-white"
-              onClick={onShare}
+              <Heart className="h-4 w-4" />
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                onAddToAlbum(photo.id)
+              }}
+              className="rounded-full bg-zinc-800 p-1.5 text-zinc-400 hover:text-zinc-100 transition-colors"
             >
-              <ShareIcon className="h-4 w-4" />
-            </Button>
-          )}
-          {isAdmin && (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  className="h-8 w-8 text-white hover:bg-black/20 hover:text-white"
-                >
-                  <MoreHorizontalIcon className="h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem onClick={() => onTagsUpdate?.(tags)}>
-                  <TagIcon className="mr-2 h-4 w-4" />
-                  Edit Tags
-                </DropdownMenuItem>
-                <DropdownMenuItem className="text-destructive">
-                  Delete Photo
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          )}
+              <Plus className="h-4 w-4" />
+            </button>
+          </div>
         </div>
       </div>
-      {(title || tags.length > 0) && (
-        <div className="p-3">
-          {title && <h3 className="font-medium">{title}</h3>}
-          {tags.length > 0 && (
-            <div className="mt-1 flex flex-wrap gap-1">
-              {tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-flex items-center rounded-full bg-muted px-2 py-0.5 text-xs font-medium"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-    </Card>
+    </div>
   )
 }

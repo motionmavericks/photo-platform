@@ -1,0 +1,23 @@
+{
+  "id": "39a0d479-2c19-4cbc-ab60-4b47fd5330ca",
+  "title": "julie-uhrman",
+  "original_filename": "julie-uhrman.jpg",
+  "mime_type": "image/jpeg",
+  "size_bytes": 471978,
+  "width": 1707,
+  "height": 2560,
+  "description": null,
+  "status": "processing",
+  "face_detections": [
+    {
+      "person": "julie uhrman",
+      "confidence_score": 1.0,
+      "bounding_box": {
+        "x": 31.693028705330992,
+        "y": 23.5546875,
+        "width": 32.51318101933216,
+        "height": 21.6796875
+      }
+    }
+  ]
+}

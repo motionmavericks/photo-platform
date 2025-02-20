@@ -41,7 +41,9 @@
   "navigation": {
     "home": "Home",
     "mainMenu": "Main menu",
-    "todos": "Todos"
+    "dashboard": "Dashboard",
+    "albums": "Albums",
+    "photos": "Photos"
   },
   "settings": {
     "title": "Settings",

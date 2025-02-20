@@ -29,6 +29,8 @@ import { ForwardRefExoticComponent, RefAttributes, useState } from 'react';
 import { SettingsModal } from '@/components/settings-modal';
 import { useTranslations } from 'next-intl';
 
+import { Image as ImageIcon, Album, LayoutDashboard } from 'lucide-react';
+
 // Menu items
 const items: Array<{
   titleKey: string;
@@ -36,9 +38,19 @@ const items: Array<{
   icon: ForwardRefExoticComponent<Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>>;
 }> = [
   {
-    titleKey: 'navigation.todos',
-    url: '/todos',
-    icon: ListCheck,
+    titleKey: 'navigation.dashboard',
+    url: '/dashboard',
+    icon: LayoutDashboard,
+  },
+  {
+    titleKey: 'navigation.albums',
+    url: '/admin/albums',
+    icon: Album,
+  },
+  {
+    titleKey: 'navigation.photos',
+    url: '/photos',
+    icon: ImageIcon,
   },
 ];
 
