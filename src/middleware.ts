@@ -38,22 +38,23 @@ export async function middleware(request: NextRequest) {
         data: { user },
     } = await supabase.auth.getUser();
 
-    if (user) {
-        if (request.nextUrl.pathname.startsWith("/auth")) {
-            // user is logged in, potentially respond by redirecting the user to the home page
-            const url = request.nextUrl.clone();
-            url.pathname = "/";
-            return NextResponse.redirect(url);
-        }
-    } else {
-        if (!request.nextUrl.pathname.startsWith("/auth")) {
-            // no user, potentially respond by redirecting the user to the login page
-            const url = request.nextUrl.clone();
-            url.pathname = "/auth/login";
-            url.searchParams.set("next", request.nextUrl.pathname);
-            return NextResponse.redirect(url);
-        }
-    }
+    // Temporarily disable authentication
+    // if (user) {
+    //     if (request.nextUrl.pathname.startsWith("/auth")) {
+    //         // user is logged in, potentially respond by redirecting the user to the home page
+    //         const url = request.nextUrl.clone();
+    //         url.pathname = "/";
+    //         return NextResponse.redirect(url);
+    //     }
+    // } else {
+    //     if (!request.nextUrl.pathname.startsWith("/auth")) {
+    //         // no user, potentially respond by redirecting the user to the login page
+    //         const url = request.nextUrl.clone();
+    //         url.pathname = "/auth/login";
+    //         url.searchParams.set("next", request.nextUrl.pathname);
+    //         return NextResponse.redirect(url);
+    //     }
+    // }
 
     // IMPORTANT: You *must* return the supabaseResponse object as it is. If you're
     // creating a new response object with NextResponse.next() make sure to:

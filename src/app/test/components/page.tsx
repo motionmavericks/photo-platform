@@ -12,14 +12,14 @@ import { Button } from "@/components/ui/button"
 const samplePhotos = [
   {
     id: "1",
-    src: "https://images.unsplash.com/photo-1682687220742-aba19b51f319",
+    src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
     alt: "Sample photo 1",
-    title: "Nature",
-    tags: ["nature", "landscape"]
+    title: "Forest Path",
+    tags: ["nature", "landscape", "forest"]
   },
   {
     id: "2",
-    src: "https://images.unsplash.com/photo-1682687221038-404670d5b57a",
+    src: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e",
     alt: "Sample photo 2",
     title: "Architecture",
     tags: ["building", "city"]
@@ -31,17 +31,17 @@ const sampleAlbums = [
     id: "1",
     title: "Nature Collection",
     description: "Beautiful landscapes and nature shots",
-    coverImage: "https://images.unsplash.com/photo-1682687220742-aba19b51f319",
+    coverImage: "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
     photoCount: 12,
-    createdAt: new Date().toISOString()
+    createdAt: "2025-02-20T00:00:00.000Z"
   },
   {
     id: "2",
     title: "Urban Photography",
     description: "City life and architecture",
-    coverImage: "https://images.unsplash.com/photo-1682687221038-404670d5b57a",
+    coverImage: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e",
     photoCount: 8,
-    createdAt: new Date().toISOString()
+    createdAt: "2025-02-20T00:00:00.000Z"
   }
 ]
 
