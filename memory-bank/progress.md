@@ -51,16 +51,21 @@
 ## In Progress
 
 ### UI Components
-- [x] PhotoCard component
-- [x] PhotoGrid component
-- [x] AlbumGrid component
-- [x] ImageUpload component
-- [x] TagInput component
+- [x] PhotoCard component (with hover actions)
+- [x] PhotoGrid component (with tag filtering)
+- [x] AlbumGrid component (with admin controls)
+- [x] ImageUpload component (with drag & drop)
+- [x] TagInput component (with suggestions)
+- [x] Test page for components
 - [ ] Component testing
 - [ ] Integration testing
+- [ ] Performance optimization
 
 ### Gallery Features
-- [ ] Photo viewing
+- [x] Basic photo display
+- [x] Album grid layout
+- [x] Tag filtering system
+- [ ] Photo viewing modal
 - [ ] Album navigation
 - [ ] Download system
 - [ ] Social sharing
